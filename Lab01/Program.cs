@@ -146,6 +146,21 @@ namespace Lab01
             }
         }
 
+        public static List<Sach> TimKiem(string keyw)
+        {
+            var rs = new List<Sach>();
+            foreach (var sach in dsSach)
+            {
+                if (sach.maSach.Contains(keyw) || sach.tenSach.Contains(keyw) || sach.tacGia.Contains(keyw))
+                {
+                    rs.Add(sach);
+                    continue;
+                }
+            }
+
+            return rs;
+        }
+
 
         static void Main(string[] args)
         {
@@ -174,6 +189,24 @@ namespace Lab01
                 Console.WriteLine(item.tenSach);
                 Console.WriteLine(item.sl);
             }
+
+            TraSach(dg1, sachMuon);
+
+            foreach (var item in dsSach)
+            {
+                Console.WriteLine(item.tenSach);
+                Console.WriteLine(item.sl);
+            }
+
+            var tim = TimKiem("C");
+
+            foreach (var item in tim)
+            {
+                Console.WriteLine(item.tenSach);
+                Console.WriteLine(item.sl);
+            }
+
+
 
             Console.ReadLine();
 
